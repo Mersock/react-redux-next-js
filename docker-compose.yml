@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  my-cv-front-end:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: my-cv-authentication
+    ports:
+      - "3301:3301"
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app/
+    networks: 
+      - my-cv-services
+    command: ["npm","run","dev"]  
+    
+networks: 
+  my-cv-services:
+    external: true
+    driver: bridge 
+    
+  
